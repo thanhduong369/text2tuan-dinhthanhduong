@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		[type="text"], 
+		[type="button"] {
+			margin-top: 10px;
+		}
+		[type="button"] {
+			width: 50px;
+		}
+		body {
+			max-width: 1200px;
+			width: 100%;
+			margin: 0 auto;
+		}
+		.container {
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			margin-top: 20px;
+		}
+		.item {
+			border: 1px solid;
+			margin: 2px;
+		}
+		.row {
+			grid-column: 1/span 12;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	&nbsp;N: <input type="text" id="n">
+	M: <input type="text" id="m">
+	<input type="button" id="btn" value="run">
+	<div class="container" id="container">
+		<div class="item row"></div>
+	</div>
+	<script>
+		document.getElementById("btn").addEventListener("click", run);
+		let n = document.getElementById('n'); // ROW
+		let m = document.getElementById('m'); // COL
+
+		function run() {
+			let node = document.createElement("div");
+			let body = document.getElementsByTagName("body")[0];		
+			node.setAttribute("class", "item row");				
+			let row = document.getElementById("container").appendChild(node);
+			if(Number(n.value) === 0)
+			{
+				alert("Chưa nhập N");
+			}else {
+				for(let i= 1; i<=Number(n.value); i++)
+				{
+					console.log(row);
+				}		
+			}
+		}
+	</script>
+</body>
+</html>

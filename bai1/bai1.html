@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cau1</title>
+	<style type="text/css">
+      *{
+      	margin: 0px;
+      	padding: 0px;
+      	font-family: 'Rock Salt', sans-serif,cursive;
+      	user-select: none;
+      }
+      html{
+      	background-image: url(anh1.jpg);
+      }
+      div.bord h2{
+      	height:150px;
+      	width: 100%;
+      	font-size: 42px;
+      }
+      .bord
+      {
+      	width:450px;
+      	margin: 0px auto;
+      }
+      body{
+      	padding: 20px;
+      	background-color:#FBFBFB;
+      	width: 1000px;
+      	margin:10px auto;
+      	text-align: center;
+      	
+      }
+      div[id^="row"] div
+      {
+      	width: 150px;
+      	height: 150px;
+      	border: 2px solid red;
+      	float: left;
+      	box-sizing: border-box;
+      }
+       div[id^="row"] div:first-child{
+       	border-left: none;
+       }
+       div[id^="row"] div:last-child{
+       	border-right: none;
+       }
+        div[id="row-1"] div {
+       	border-top: none;
+       }
+        div[id="row-3"] div {
+       	border-bottom: none;
+       }
+
+
+       div[id^="row"]{
+       	overflow:hidden;
+       	clear: both;
+       }
+       span{
+       	font-size:75px;
+       	margin-top:50px;
+       	line-height:120px;
+       }
+	</style>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+	<script type="text/javascript">
+		var nguoichoi =[];
+		var kyhieu =["X","O"];
+		 nguoichoi[0]="player one";
+		 nguoichoi[1]="player tow";
+		 var scor=[0,0];
+		var chonlua =0;
+		var winvalue =[7,56,73,84,146,273,292,448];
+		var gameover= false;
+		function kiemtrawing() {
+		for(var i=0;i<winvalue.length;i++){
+			if((scor[chonlua] & winvalue[i]) == winvalue[i])
+			{
+			 document.getElementById("game-display").innerText=nguoichoi[chonlua] + "\twin !! game over\t - " + "F5 to play Again";
+			    gameover= true;
+			}
+		  }
+		  if(((scor[0] + scor[1]) == 511) && !gameover)
+		  {
+		  	  document.getElementById("game-display").innerText="Tie !! game over";
+			   gameover= true;
+		  }
+		}
+		function play(clich,value) {
+			if(!gameover)
+			{
+			scor[chonlua] += value;
+			clich.onclick ="";
+			clich.innerHTML ="<span>" + kyhieu[chonlua] + "</span>";
+			kiemtrawing();
+			if(!gameover){
+			 tongnguoichoi();
+			}
+             
+			}	
+		}
+		function tongnguoichoi() {
+		   if(chonlua==0) chonlua=1;
+		   else
+		   	chonlua=0;
+		   document.getElementById("game-display").innerText="Turn\t\t" + nguoichoi[chonlua];
+		}
+
+	</script>
+</head>
+<body>
+	<div class="bord">
+		<h2 id="game-display"> CARO GAME </h2>
+  <div id="row-1"> 
+  	<div id="a" onclick="play(this,1)"></div> 
+  	<div id="b" onclick="play(this,2)"></div> 
+  	<div id="c" onclick="play(this,4)"></div>
+   </div>
+  <div id="row-2"> 
+  	<div id="d" onclick="play(this,8)"></div>
+  	<div id="e" onclick="play(this,16)"></div>
+  	<div id="f" onclick="play(this,32)"></div>
+  	</div>
+  <div id="row-3"> 
+  	<div id="h" onclick="play(this,64)"></div> 
+  	<div id="k" onclick="play(this,128)"></div>
+    <div id="l" onclick="play(this,256)"></div> 
+   </div>
+  </div>
+</body>
+</html>

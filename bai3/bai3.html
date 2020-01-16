@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			max-width: 1200px;
+			width: 100%;
+			margin: 0 auto;
+		}
+		.container {
+			background: #000;
+			width: 600px;
+			height: 400px;
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		button {
+			position: relative;
+			cursor: pointer;
+			padding: 10px;
+			width: 80px;
+			top: 450px;
+			left: 300px;
+		}
+		.header {
+			width: 15px;
+			height: 15px;
+			background: #0f0;
+			position: relative;
+			left: 0;
+			top: 0;
+			transition: 10s linear;
+		}
+		.point {
+			position: relative;
+			cursor: pointer;
+			padding: 10px;
+			width: 80px;
+			top: 460px;
+			left: 150px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" id="game">
+		<div class="header" id="header"></div>
+	</div>
+	<div class="point">0</div>
+	<button id="w"> Top </button>
+	<button id="s"> Bottom </button>
+	<button id="d"> Right </button>
+	<button id="a"> Left </button>
+	<script>
+		let headerSnake = document.getElementById("header");
+		const MAX_WIDTH = 600;
+		const MAX_HEIGHT = 400;
+		const BOX = 15;
+
+		function goTop() {
+			for(let i = MAX_HEIGHT - BOX; i<= 0; i--) {
+				
+			}
+		}
+
+		function goBottom() {
+			for(let i = 1; i <= MAX_HEIGHT - BOX; i++) {
+				headerSnake.style.top = i + "px";
+			}
+		}
+
+		function goRight() {
+			
+		}
+
+		function goLeft() {
+			for(let i = 1; i <= MAX_WIDTH - BOX; i++) {
+				headerSnake.style.left = i + "px";
+			}
+		}
+
+		document.getElementById('w').addEventListener("click", goTop); //119
+		document.getElementById('s').addEventListener("click", goBottom); //115
+		document.getElementById('d').addEventListener("click", goRight); //100
+		document.getElementById('a').addEventListener("click", goLeft); //97 
+	</script>
+</body>
+</html>
